@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ConvertersHub - Professional Unit Converter</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="navbar">
+    <div class="navbar-content">
+      <h1 class="logo">⚡ ConvertersHub</h1>
+      <button id="themeToggle" class="theme-btn">🌙 Dark Mode</button>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="tabs-container">
+      <button class="tab-btn active" data-tab="length">📏 Length</button>
+      <button class="tab-btn" data-tab="weight">⚖️ Weight</button>
+      <button class="tab-btn" data-tab="volume">🧴 Volume</button>
+      <button class="tab-btn" data-tab="data">💾 Data</button>
+      <button class="tab-btn" data-tab="timezone">🌍 Time Zone</button>
+      <button class="tab-btn" data-tab="currency">💱 Currency</button>
+    </div>
+
+    <!-- Length Converter -->
+    <section id="length" class="tab-content active length-bg">
+      <div class="card">
+        <h2>📏 Length Converter</h2>
+        <p class="subtitle">Convert between different length units</p>
+        
+        <div class="form-group">
+          <label>Value</label>
+          <input id="lengthValue" type="number" step="any" value="1" placeholder="Enter value" />
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label>From</label>
+            <select id="lengthFrom">
+              <option value="m">Meters (m)</option>
+              <option value="km">Kilometers (km)</option>
+              <option value="cm">Centimeters (cm)</option>
+              <option value="mm">Millimeters (mm)</option>
+              <option value="ft">Feet (ft)</option>
+              <option value="in">Inches (in)</option>
+              <option value="mi">Miles (mi)</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label>To</label>
+            <select id="lengthTo">
+              <option value="km">Kilometers (km)</option>
+              <option value="m">Meters (m)</option>
+              <option value="cm">Centimeters (cm)</option>
+              <option value="mm">Millimeters (mm)</option>
+              <option value="ft">Feet (ft)</option>
+              <option value="in">Inches (in)</option>
+              <option value="mi">Miles (mi)</option>
+            </select>
+          </div>
+        </div>
+
+        <button class="btn btn-primary" onclick="convert('length')">Convert</button>
+        <div id="lengthResult" class="result"></div>
+      </div>
+    </section>
+
+    <!-- Weight Converter -->
+    <section id="weight" class="tab-content weight-bg">
+      <div class="card">
+        <h2>⚖️ Weight Converter</h2>
+        <p class="subtitle">Convert between different weight units</p>
+        
+        <div class="form-group">
+          <label>Value</label>
+          <input id="weightValue" type="number" step="any" value="1" placeholder="Enter value" />
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label>From</label>
+            <select id="weightFrom">
+              <option value="kg">Kilograms (kg)</option>
+              <option value="g">Grams (g)</option>
+              <option value="mg">Milligrams (mg)</option>
+              <option value="lb">Pounds (lb)</option>
+              <option value="oz">Ounces (oz)</option>
+              <option value="t">Metric Tons (t)</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label>To</label>
+            <select id="weightTo">
+              <option value="g">Grams (g)</option>
+              <option value="kg">Kilograms (kg)</option>
+              <option value="mg">Milligrams (mg)</option>
+              <option value="lb">Pounds (lb)</option>
+              <option value="oz">Ounces (oz)</option>
+              <option value="t">Metric Tons (t)</option>
+            </select>
+          </div>
+        </div>
+
+        <button class="btn btn-primary" onclick="convert('weight')">Convert</button>
+        <div id="weightResult" class="result"></div>
+      </div>
+    </section>
+
+    <!-- Volume Converter -->
+    <section id="volume" class="tab-content volume-bg">
+      <div class="card">
+        <h2>🧴 Volume Converter</h2>
+        <p class="subtitle">Convert between different volume units</p>
+        
+        <div class="form-group">
+          <label>Value</label>
+          <input id="volumeValue" type="number" step="any" value="1" placeholder="Enter value" />
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label>From</label>
+            <select id="volumeFrom">
+              <option value="l">Liters (L)</option>
+              <option value="ml">Milliliters (ml)</option>
+              <option value="m3">Cubic Meters (m³)</option>
+              <option value="gal">Gallons (gal)</option>
+              <option value="pt">Pints (pt)</option>
+              <option value="fl oz">Fluid Ounces (fl oz)</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label>To</label>
+            <select id="volumeTo">
+              <option value="ml">Milliliters (ml)</option>
+              <option value="l">Liters (L)</option>
+              <option value="m3">Cubic Meters (m³)</option>
+              <option value="gal">Gallons (gal)</option>
+              <option value="pt">Pints (pt)</option>
+              <option value="fl oz">Fluid Ounces (fl oz)</option>
+            </select>
+          </div>
+        </div>
+
+        <button class="btn btn-primary" onclick="convert('volum')">Convert</button>
+        <div id="volumeResult" class="result"></div>
+      </div>
+    </section>
+
+    <!-- Data Converter -->
+    <section id="data" class="tab-content data-bg">
+      <div class="card">
+        <h2>💾 Data Converter</h2>
+        <p class="subtitle">Convert between data storage units</p>
+        
+        <div class="form-group">
+          <label>Value</label>
+          <input id="dataValue" type="number" step="any" value="1024" placeholder="Enter value" />
+        </div>
+        
+        <div class="form-group">
+          <label>Conversion Type</label>
+          <select id="dataMode">
+            <option value="mb-to-gb">Megabytes (MB) → Gigabytes (GB)</option>
+            <option value="gb-to-tb">Gigabytes (GB) → Terabytes (TB)</option>
+            <option value="mb-to-tb">Megabytes (MB) → Terabytes (TB)</option>
+          </select>
+        </div>
+
+        <button class="btn btn-primary" onclick="convertData()">Convert</button>
+        <div id="dataResult" class="result"></div>
+      </div>
+    </section>
+
+    <!-- Time Zone Converter -->
+    <section id="timezone" class="tab-content timezone-bg">
+      <div class="card">
+        <h2>🌍 Time Zone Converter</h2>
+        <p class="subtitle">Convert time between different time zones</p>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label>From Time Zone</label>
+            <input id="tzFrom" type="text" value="UTC" placeholder="e.g., UTC, IST, PST" />
+          </div>
+          
+          <div class="form-group">
+            <label>To Time Zone</label>
+            <input id="tzTo" type="text" value="IST" placeholder="e.g., UTC, IST, EST" />
+          </div>
+        </div>
+
+        <button class="btn btn-primary" onclick="convertTime()">Convert</button>
+        <div id="timezoneResult" class="result"></div>
+      </div>
+    </section>
+      
+      <section id="currency" class="tab-content currency-bg">
+        <div class="card">
+          <h2>💱 Currency Converter</h2>
+          <p class="subtitle">Convert between different currencies</p>
+          
+          <div class="form-group">
+            <label>Value</label>
+            <input id="currencyValue" type="number" step="any" value="1" placeholder="Enter value" />
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label>From Currency</label>
+              <select id="currencyFrom">
+                <option value="USD">US Dollar (USD)</option>
+                <option value="EUR">Euro (EUR)</option>
+                <option value="GBP">British Pound (GBP)</option>
+                <option value="JPY">Japanese Yen (JPY)</option>
+                <option value="AUD">Australian Dollar (AUD)</option>
+                <option value="CAD">Canadian Dollar (CAD)</option>
+                <option value="CHF">Swiss Franc (CHF)</option>
+                <option value="CNY">Chinese Yuan (CNY)</option>
+                <option value="INR">Indian Rupee (INR)</option>
+                <option value="BRL">Brazilian Real (BRL)</option>
+                <option value="ZAR">South African Rand (ZAR)</option>
+                <option value="RUB">Russian Ruble (RUB)</option>
+                <option value="HKD">Hong Kong Dollar (HKD)</option>
+                <option value="SGD">Singapore Dollar (SGD)</option>
+                <option value="MXN">Mexican Peso (MXN)</option>
+                <option value="KRW">South Korean Won (KRW)</option>
+                <option value="TRY">Turkish Lira (TRY)</option>
+                <option value="SEK">Swedish Krona (SEK)</option>
+                <option value="NOK">Norwegian Krone (NOK)</option>
+                <option value="DKK">Danish Krone (DKK)</option>
+                <!-- Add more currencies as needed -->
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label>To Currency</label>
+              <select id="currencyTo">
+                <option value="USD">US Dollar (USD)</option>
+                <option value="EUR">Euro (EUR)</option>
+                <option value="GBP">British Pound (GBP)</option>
+                <option value="JPY">Japanese Yen (JPY)</option>
+                <option value="AUD">Australian Dollar (AUD)</option>
+                <option value="CAD">Canadian Dollar (CAD)</option>
+                <option value="CHF">Swiss Franc (CHF)</option>
+                <option value="CNY">Chinese Yuan (CNY)</option>
+                <option value="INR">Indian Rupee (INR)</option>
+                <option value="BRL">Brazilian Real (BRL)</option>
+                <option value="ZAR">South African Rand (ZAR)</option>
+                <option value="RUB">Russian Ruble (RUB)</option>
+                <option value="HKD">Hong Kong Dollar (HKD)</option>
+                <option value="SGD">Singapore Dollar (SGD)</option>
+                <option value="MXN">Mexican Peso (MXN)</option>
+                <option value="KRW">South Korean Won (KRW)</option>
+                <option value="TRY">Turkish Lira (TRY)</option>
+                <option value="SEK">Swedish Krona (SEK)</option>
+                <option value="NOK">Norwegian Krone (NOK)</option>
+                <option value="DKK">Danish Krone (DKK)</option>
+                <!-- Add more currencies as needed -->
+              </select>
+            </div>
+          </div>
+
+          <button class="btn btn-primary" onclick="convertCurrency()">Convert</button>
+          <div id="currencyResult" class="result"></div>
+        </div>
+      </section>
+
+    <div id="status" class="status"></div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
