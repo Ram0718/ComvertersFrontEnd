@@ -85,11 +85,13 @@ async function convert(kind) {
     from = document.getElementById('weightFrom').value;
     to = document.getElementById('weightTo').value;
     resultEl = document.getElementById('weightResult');
-  } else if (kind === 'volum') {
+  } else if (kind === 'volume') {
     value = document.getElementById('volumeValue').value;
     from = document.getElementById('volumeFrom').value;
     to = document.getElementById('volumeTo').value;
     resultEl = document.getElementById('volumeResult');
+  } else {
+    throw new Error('Unknown converter type: ' + kind);
   }
 
   resultEl.innerText = '⏳ Converting...';
@@ -97,7 +99,18 @@ async function convert(kind) {
 
   try {
     const out = await postConvert(kind, value, from, to);
-    const displayText = `<strong>${value} ${from}</strong> = <strong style="color: #2dbe9b;">${out.toFixed(4)} ${to}</strong>`;
+    // Accept numeric or object { result: number } response
+    const numericResult = typeof out === 'number'
+      ? out
+      : (typeof out === 'object' && out !== null)
+        ? (out.result ?? out.value ?? out.conversion ?? NaN)
+        : NaN;
+
+    if (!Number.isFinite(numericResult)) {
+      throw new Error('Unexpected response format from API: ' + JSON.stringify(out));
+    }
+
+    const displayText = `<strong>${value} ${from}</strong> = <strong style="color: #2dbe9b;">${numericResult.toFixed(4)} ${to}</strong>`;
     resultEl.innerHTML = displayText;
     setStatus('✅ Conversion successful!');
   } catch (err) {
