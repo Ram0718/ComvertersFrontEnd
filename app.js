@@ -228,5 +228,5 @@ window.addEventListener('DOMContentLoaded', () => {
   }
   updateThemeButtonText();
 
-  setStatus('✨ Ready! Backend deployed on Render');
+  setStatus('© Rambabu Darnasi - All Rights Reserved');
 });
