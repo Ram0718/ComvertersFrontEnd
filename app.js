@@ -1,4 +1,4 @@
-const API_BASE = 'https://convertershub-production.up.railway.app';
+const API_BASE = 'https://convertershub-7.onrender.com';
 
 // ===== TAB NAVIGATION =====
 function switchTab(tabName) {
@@ -228,5 +228,5 @@ window.addEventListener('DOMContentLoaded', () => {
   }
   updateThemeButtonText();
 
-  setStatus('✨ Ready! Ensure backend running on http://localhost:8080');
+  setStatus('✨ Ready! Backend deployed on Render');
 });
