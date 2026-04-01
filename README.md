@@ -30,8 +30,8 @@ A modern, responsive unit converter web application with a beautiful dark/light 
 - **Fetch API**: For making HTTP requests to the backend
 
 ### Backend
-- **Node.js**: JavaScript runtime
-- **Express.js**: Web framework for API endpoints
+- **Java SpringBoot**: Java 25
+
 - **RESTful API**: Clean and simple API design
 
 ### Deployment
